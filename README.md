@@ -23,11 +23,10 @@ Now you can launch dAsciiArt:
 ./dAsciiArt
 ```
 ## Usage
-Usage: dAsciiArt [options]
-
-Options:
 ```
-    -h          Help
+Usage: dAsciiArt [options]
+Options:
+    -h          Display this information
     -d          Display the result on terminal
     -s          Save the result in the file specified with -op
     -c          Use webcam as input
