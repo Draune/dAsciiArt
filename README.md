@@ -1,11 +1,12 @@
 # dAsciiArt
-dAsciiArt is just a little project "for fun" that will transform your images and videos in ascii art.
+dAsciiArt is just a little project "for fun" that will transform your images and videos in ascii art. I know it is not the best way to use C++ but I think it is sufficient for a little project like that.
 ## Compatibility
 The sources are compatible with linux, if you want to use it on another OS the unique file that should pose problem is display.cpp (because of the system("clear") and the usleep()).
 
 About the compatibility of the image and video sources, the unique video format that should work are .mp4, for the images use .png, .jpg and .jpeg.
 ## Installation
 First you should install opencv (see https://docs.opencv.org/4.x/d7/d9f/tutorial_linux_install.html).
+
 After clone this repository:
 ```
 git clone https://github.com/Draune/dAsciiArt.git
