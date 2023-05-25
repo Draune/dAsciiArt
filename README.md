@@ -26,6 +26,7 @@ Now you can launch dAsciiArt:
 Usage: dAsciiArt [options]
 
 Options:
+```
     -h          Help
     -d          Display the result on terminal
     -s          Save the result in the file specified with -op
@@ -35,6 +36,7 @@ Options:
     -ip <file>  Specify the input file when using -i or -v
     -op <file>  Specify the output file to save
     -t <integer> Specify the recording time in seconds when saving with -c
+```
 
 Every usage different from those listed below will return the help message.
 
