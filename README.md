@@ -1,5 +1,10 @@
 # dAsciiArt
 dAsciiArt is just a little project "for fun" that will transform your videos in ascii art. I know it is not the best way to use C++ but I think it is sufficient for a little project like that.
+## Exemple
+An exemple of saving a video with dAsciiArt:
+
+https://github.com/Draune/dAsciiArt/blob/main/test/test.mp4
+
 ## Compatibility
 The sources are compatible with linux, if you want to use it on another OS the unique file that should pose problem is display.cpp (because of the system("clear") and the usleep()).
 
