@@ -10,16 +10,6 @@ extern "C"
 
 void display_img(char **char_img, unsigned int width, unsigned int height);
 
-void d_display_img(std::string img_file)
-{
-    initscr();
-    unsigned int width = COLS;
-    unsigned int height = LINES;
-    endwin();
-
-    display_img(d_convert_img(img_file, &width, &height), width, height);
-}
-
 void d_display_video(std::string video_file)
 {
     initscr();

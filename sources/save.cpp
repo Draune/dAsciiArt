@@ -8,13 +8,6 @@ extern "C"{
 
 cv::Mat create_img(char **char_img, unsigned int width, unsigned int height);
 
-void d_save_img(std::string img_file, std::string output_file)
-{
-    unsigned int max_width = 0;
-    unsigned int max_height = 0;
-    cv::imwrite(output_file, create_img(d_convert_img(img_file, &max_width, &max_height), max_width, max_height));
-}
-
 void d_save_video(std::string video_file, std::string output_file)
 {
     unsigned int max_width = 0;

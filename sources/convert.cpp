@@ -14,17 +14,6 @@ void redim(unsigned int *nb_pixel_per_char_line, unsigned int *width, unsigned i
 void nothing(void *) {}
 float grayscale(Pixel pixel);
 
-char **d_convert_img(std::string img_file, unsigned int *width, unsigned int *height)
-{
-    cv::Mat image = cv::imread(img_file);
-    if (image.empty())
-        return NULL;
-    unsigned int nb_pixel_per_char_line;
-    redim(&nb_pixel_per_char_line, width, height, image.rows, image.cols);
-    char **return_ = (char **)convert_img(image, nb_pixel_per_char_line, *width, *height);
-    return return_;
-}
-
 char ***d_convert_video(std::string video_file, unsigned int *width, unsigned int *height, float *fps, unsigned int *nb_frame)
 {
     cv::VideoCapture cap(video_file);

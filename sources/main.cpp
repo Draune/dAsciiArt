@@ -8,11 +8,10 @@ int main(int agrc, char *agrv[])
     bool save = false;     // -s
     bool display = false;  // -d
     bool video = false;    // -v
-    bool image = false;    // -i
     bool cam = false;      // -c
     bool help = false;     // -h
-    bool path_in = false;  // -ip
-    bool path_out = false; // -op
+    bool path_in = false;  // -i
+    bool path_out = false; // -o
     bool time = false;     // -t
 
     std::string input_file;
@@ -37,10 +36,6 @@ int main(int agrc, char *agrv[])
             {
                 video = true;
             }
-            else if ((agrv[i][1] == 'i') && (agrv[i][2] == '\0'))
-            {
-                image = true;
-            }
             else if ((agrv[i][1] == 'c') && (agrv[i][2] == '\0'))
             {
                 cam = true;
@@ -49,7 +44,7 @@ int main(int agrc, char *agrv[])
             {
                 help = true;
             }
-            else if ((agrv[i][1] == 'i') && (agrv[i][2] == 'p') && (agrv[i][3] == '\0'))
+            else if ((agrv[i][1] == 'i') && (agrv[i][2] == '\0'))
             {
                 i++;
                 if (agrv[i][0] == '-')
@@ -60,7 +55,7 @@ int main(int agrc, char *agrv[])
                     input_file = std::string(agrv[i]);
                 }
             }
-            else if ((agrv[i][1] == 'o') && (agrv[i][2] == 'p') && (agrv[i][3] == '\0'))
+            else if ((agrv[i][1] == 'o') && (agrv[i][2] == '\0'))
             {
                 i++;
                 if (agrv[i][0] == '-')
@@ -85,29 +80,27 @@ int main(int agrc, char *agrv[])
                         help = true;
                 }
             }
-            else 
+            else
                 help = true;
         }
     }
 
     if ((save && display) || !(save || display))
         help = true;
-    if ((video && image) || (video && cam) || (image && cam) || !(image || video || cam))
+    if ((video && cam) || !(video || cam))
         help = true;
-    if ((!path_in && (image || video)) || (path_in && cam))
+    if ((!path_in && video) || (path_in && cam))
         help = true;
     if ((!path_out && save) || (path_out && display))
         help = true;
-    if ((!time && save && cam) || (time && (display || (save && (video || image)))))
+    if ((!time && save && cam) || (time && (display || (save && video))))
         help = true;
 
     if (help)
         display_help();
     else if (display)
     {
-        if (image)
-            d_display_img(input_file);
-        else if (video)
+        if (video)
             d_display_video(input_file);
         else if (cam)
             d_display_cam();
@@ -116,9 +109,7 @@ int main(int agrc, char *agrv[])
     }
     else if (save)
     {
-        if (image)
-            d_save_img(input_file, output_file);
-        else if (video)
+        if (video)
             d_save_video(input_file, output_file);
         else if (cam)
             d_save_cam(output_file, time_s);
@@ -131,18 +122,18 @@ int main(int agrc, char *agrv[])
     return 0;
 }
 
-void display_help(){
+void display_help()
+{
     printf("Usage: dAsciiArt [options]\n");
     printf("Options:\n");
 
     printf("\t-h\t\tDisplay this information\n");
     printf("\t-d\t\tDisplay the result on terminal\n");
-    printf("\t-s\t\tSave the result in the file specified with -op\n");
+    printf("\t-s\t\tSave the result in the file specified with -o\n");
     printf("\t-c\t\tUse webcam as input\n");
-    printf("\t-i\t\tUse the image specified with -ip as input\n");
-    printf("\t-v\t\tUse the video specified with -ip as input\n");
-    printf("\t-ip <file>\tSpecify the input file when using -i or -v\n");
-    printf("\t-op <file>\tSpecify the output file to save\n");
+    printf("\t-v\t\tUse the video specified with -i as input\n");
+    printf("\t-i <file>\tSpecify the input file when using -v\n");
+    printf("\t-o <file>\tSpecify the output file to save\n");
     printf("\t-t <integer>\tSpecify the recording time in seconds when saving with -c\n");
 
     printf("\nFor more informations see: https://github.com/Draune/dAsciiArt\n");
