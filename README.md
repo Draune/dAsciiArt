@@ -3,7 +3,7 @@ dAsciiArt is just a little project "for fun" that will transform your videos in 
 ## Exemple
 An exemple of saving a video with dAsciiArt:
 
-https://github.com/Draune/dAsciiArt/blob/main/test/test.mp4
+https://github.com/Draune/dAsciiArt/blob/main/test
 
 ## Compatibility
 The sources are compatible with linux, if you want to use it on another OS the unique file that should pose problem is display.cpp (because of the system("clear") and the usleep()).
